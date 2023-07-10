@@ -1,2 +1,2 @@
 #!/bin/bin
-ls -t | head -n 10
+ls -t1 | head -n 10
