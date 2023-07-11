@@ -14,6 +14,8 @@ quit): " file_name
         echo "Quitting the program..."
         exit 0
     fi
+    # Add the shebang at beginning og the file
+    echo "#!/bin/bash" > "$file_name"
 
     # Invoke vi editor for text input
     vi "$file_name"
