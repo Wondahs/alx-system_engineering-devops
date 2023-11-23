@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Displays content of current directory
+
+items=(*)
+for item in "${items[@]}"; do
+	echo "$item" | cut -d "-" -f 2
+done
