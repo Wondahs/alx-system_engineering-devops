@@ -6,7 +6,7 @@
 
 msg()
 {
-	echo "I am invincible"
+	echo "I am invincible!!!"
 }
 
 trap "msg" SIGTERM
