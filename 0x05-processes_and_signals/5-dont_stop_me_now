@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Kills 4-to_infinity_and_beyond
+
+filename="4-to_infinity_and_beyond"
+file_pid=$(pgrep -o "$filename")
+
+if [ -n "$file_pid" ]; then
+	kill "$file_pid"
+fi
