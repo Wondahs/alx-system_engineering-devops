@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Connects to my alx server
+
+# Load balancer
+sudo ssh -i ~/.ssh/id_rsa ubuntu@54.197.21.207
