@@ -27,7 +27,7 @@ server {
 	}
 
 	# Add custom header
-	add_header X-served-By $HOSTNAME;
+	add_header X-Served-By $HOSTNAME;
 }
 EOF
 service nginx restart
