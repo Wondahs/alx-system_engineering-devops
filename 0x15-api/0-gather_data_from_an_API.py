@@ -49,4 +49,5 @@ if len(argv) < 2:
 
 user_id = argv[1]
 username = get_username(user_id)
-parse(username, user_id)
+todos = get_todos(user_id)
+parse(username, todos)
