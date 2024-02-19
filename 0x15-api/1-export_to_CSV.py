@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 '''
     for a given employee ID, returns information about
-    his/her TODO list progress.
+    his/her TODO list progress and export data in the CSV format.
 '''
+import csv
 from sys import argv, exit
 import requests
-# import logging
 
 
-# logging.basicConfig(level=logging.DEBUG)
 def get_username(user_id):
     '''Gets username of employee with user_id'''
     user_url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
@@ -27,19 +26,23 @@ def get_todos(user_id):
         return data
 
 
-def parse(username, todos):
-    '''Parses data'''
-    completed = []
-    total_tasks = 0
+def to_csv(username, todos, user_id):
+    '''export data in the CSV format.'''
+    file_name = f'{user_id}.csv'
+    result = []
     for todo in todos:
-        total_tasks += 1
-        if todo.get('completed') is True:
-            completed.append(todo.get('title'))
-    completed_tasks = len(completed)
-    print(f"Employee {username} is done "
-          f"with tasks({completed_tasks}/{total_tasks})")
-    for task in completed:
-        print(f"\t {task}")
+        data = [f"{str(user_id)}", username]
+        status = str(todo.get("completed"))
+        title = str(todo.get("title"))
+        data.append(status)
+        data.append(title)
+        result.append(data)
+    with open(file_name, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+
+        for row in result:
+            writer.writerow(row)
+    
 
 if __name__ == '__main__':
     if len(argv) < 2:
@@ -48,4 +51,4 @@ if __name__ == '__main__':
     user_id = argv[1]
     username = get_username(user_id)
     todos = get_todos(user_id)
-    parse(username, todos)
+    to_csv(username, todos, user_id)
