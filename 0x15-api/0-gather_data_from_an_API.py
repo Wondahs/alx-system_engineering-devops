@@ -23,6 +23,7 @@ def get_username(user_id):
 def get_todos(user_id):
     '''Retrieves todos of employee with user_id'''
     todo_url = f'https://jsonplaceholder.typicode.com/users/{user_id}/todos'
+    # print("Getting todos")
     response = requests.get(todo_url)
     if response.status_code == 200:
         data = response.json()
@@ -31,6 +32,7 @@ def get_todos(user_id):
 
 def parse(username, todos):
     '''Parses data'''
+    # print("Parsing data")
     completed = []
     total_tasks = 0
     for todo in todos:
@@ -39,7 +41,7 @@ def parse(username, todos):
             completed.append(todo.get('title'))
     completed_tasks = len(completed)
     print(f"Employee {username} is done "
-          "with tasks({completed_tasks/total_tasks})")
+          f"with tasks({completed_tasks}/{total_tasks})")
     for task in completed:
         print(f"\t {task}")
 
