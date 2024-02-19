@@ -9,7 +9,6 @@ import requests
 
 def get_all_users():
     '''gets all employees'''
-    # print("Getting users")
     response = requests.get('https://jsonplaceholder.typicode.com/users')
     users = []
     data = response.json()
@@ -53,7 +52,7 @@ def to_json(users):
         result[f"{user_id}"] = tasks
     with open(file_name, 'w', encoding='utf-8') as json_file:
         json.dump(result, json_file)
-    
+
 
 if __name__ == '__main__':
     users = get_all_users()

@@ -42,7 +42,7 @@ def to_csv(username, todos, user_id):
 
         for row in result:
             writer.writerow(row)
-    
+
 
 if __name__ == '__main__':
     if len(argv) < 2:

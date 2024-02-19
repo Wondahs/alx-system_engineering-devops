@@ -34,13 +34,13 @@ def to_json(username, todos, user_id):
     for todo in todos:
         status = str(todo.get("completed"))
         title = str(todo.get("title"))
-        data = {"task": title, "completed": status, 
+        data = {"task": title, "completed": status,
                 "username": username}
         tasks.append(data)
     result[f"{user_id}"] = tasks
     with open(file_name, 'w', encoding='utf-8') as json_file:
         json.dump(result, json_file)
-    
+
 
 if __name__ == '__main__':
     if len(argv) < 2:
