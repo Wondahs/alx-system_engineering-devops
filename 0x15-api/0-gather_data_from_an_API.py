@@ -4,7 +4,7 @@
     his/her TODO list progress.
 '''
 import requests
-from sys import argv, exit
+import sys
 # import logging
 
 
@@ -43,10 +43,7 @@ def parse(username, todos):
 
 
 if __name__ == '__main__':
-    if len(argv) < 2:
-        exit(-1)
-
-    user_id = argv[1]
+    user_id = sys.argv[1]
     username = get_username(user_id)
     todos = get_todos(user_id)
     parse(username, todos)
