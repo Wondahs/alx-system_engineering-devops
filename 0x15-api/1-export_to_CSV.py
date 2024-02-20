@@ -14,12 +14,12 @@ def get_username(user_id):
     response = requests.get(user_url)
     if response.status_code == 200:
         data = response.json()
-        return data.get('name')
+        return data.get('username')
 
 
 def get_todos(user_id):
     '''Retrieves todos of employee with user_id'''
-    todo_url = f'https://jsonplaceholder.typicode.com/users/{user_id}/todos'
+    todo_url = f'https://jsonplaceholder.typicode.com/todos?userId={user_id}'
     response = requests.get(todo_url)
     if response.status_code == 200:
         data = response.json()

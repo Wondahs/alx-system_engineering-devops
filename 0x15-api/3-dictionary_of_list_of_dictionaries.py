@@ -23,7 +23,7 @@ def get_username(user_id):
     response = requests.get(user_url)
     if response.status_code == 200:
         data = response.json()
-        return data.get('name')
+        return data.get('username')
 
 
 def get_todos(user_id):
