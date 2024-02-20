@@ -5,10 +5,8 @@
 '''
 import requests
 import sys
-# import logging
 
 
-# logging.basicConfig(level=logging.DEBUG)
 def get_username(user_id):
     '''Gets username of employee with user_id'''
     user_url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
@@ -37,7 +35,7 @@ def parse(username, todos):
             completed.append(todo.get('title'))
     completed_tasks = len(completed)
     print(f"Employee {username} is done "
-          f"with tasks({completed_tasks}/{total_tasks})")
+          f"with tasks({completed_tasks}/{total_tasks}):")
     for task in completed:
         print(f"\t {task}")
 
