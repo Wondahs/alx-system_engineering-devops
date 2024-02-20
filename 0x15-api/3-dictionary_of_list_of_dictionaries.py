@@ -28,7 +28,7 @@ def get_username(user_id):
 
 def get_todos(user_id):
     '''Retrieves todos of employee with user_id'''
-    todo_url = f'https://jsonplaceholder.typicode.com/users/{user_id}/todos'
+    todo_url = f'https://jsonplaceholder.typicode.com/todos?userId={user_id}'
     response = requests.get(todo_url)
     if response.status_code == 200:
         data = response.json()
@@ -44,8 +44,8 @@ def to_json(users):
         todos = get_todos(user_id)
         tasks = []
         for todo in todos:
-            status = str(todo.get("completed"))
-            title = str(todo.get("title"))
+            status = todo.get('completed')
+            title = todo.get('title')
             data = {"username": username, "task": title,
                     "completed": status}
             tasks.append(data)
