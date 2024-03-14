@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Script to reload Gunicorn in a graceful way.
+
+# Get the Gunicorn PID file location (adjust if different)
+PID_FILE="/run/hbnb/hbnb.pid"
+
+# Check if PID file exists
+if [ ! -f "$PID_FILE" ]; then
+  echo "Error: Gunicorn PID file not found at $PID_FILE"
+  exit 1
+fi
+
+# Read the Gunicorn master process ID from the PID file
+PID=$(cat "$PID_FILE")
+
+# Send HUP signal to the master process for graceful reload
+echo "Sending HUP signal to Gunicorn master process (PID: $PID) for graceful reload..."
+sudo kill -HUP "$PID"
+
+# Wait for some time to allow workers to finish processing requests
+sleep 10
+
+echo "Gunicorn reload complete (may take a few seconds for new workers to spin up)."
+
+exit 0
